@@ -6,7 +6,7 @@
 //  Copyright © 2021 Root Interface. All rights reserved.
 //
 
-#include "duplicate.h"
+#include "msg-cache-dedup.h"
 
 msg_cache::msg_cache(long l_poll_res_milliseconds)
 {
