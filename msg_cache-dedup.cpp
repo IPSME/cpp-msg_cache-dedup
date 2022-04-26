@@ -6,7 +6,7 @@
 //  Copyright © 2021 Root Interface. All rights reserved.
 //
 
-#include "msg-cache-dedup.h"
+#include "msg_cache-dedup.h"
 
 msg_cache::msg_cache(long l_poll_res_milliseconds)
 {
@@ -55,9 +55,13 @@ void msg_cache::cache(t_entry entry, t_entry_context ctx) {
 	cache_.insert( {entry, ctx} ); // std:make_pair()
 }
 
-bool msg_cache::contains(t_entry entry) {
+std::tuple<bool,t_eindex> msg_cache::contains(t_entry entry) const {
 	//TODO: cache_.contains(entry); c++20
-	return (cache_.end() != cache_.find(entry));
+	t_eindex ei= cache_.find(entry);
+	return std::make_tuple(ei != cache_.end(), ei);
 }
 
+void msg_cache::expire(t_eindex t_ei) {
+	cache_.erase(t_ei);
+}
 

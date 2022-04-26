@@ -42,6 +42,7 @@ public:
 };
 
 typedef std::unordered_map<t_entry,t_entry_context> t_entries;
+typedef t_entries::const_iterator t_eindex;
 
 class msg_cache {
 	t_entries cache_;
@@ -55,7 +56,8 @@ public:
 	msg_cache(long l_poll_res_milliseconds);
 	~msg_cache();
 	void cache(t_entry, t_entry_context);
-	bool contains(t_entry);
+	std::tuple<bool,t_eindex> contains(t_entry entry) const;
+	void expire(t_eindex t_ie);
 };
 
 class duplicate : public msg_cache {
@@ -63,7 +65,8 @@ public:
 	duplicate() : msg_cache() {}
 	duplicate(long l_poll_res_milliseconds) : msg_cache(l_poll_res_milliseconds) {}
 	bool exists(t_entry entry) {
-		return this->contains(entry);
+		auto res= this->contains(entry);
+		return std::get<0>(res);
 	}
 };
 
