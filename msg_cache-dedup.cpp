@@ -1,6 +1,5 @@
 //
-//  duplicate.cpp
-//  objc-zmq-reflector
+//  msg_cache-dedup.cpp
 //
 //  Created by dev on 2021-10-28.
 //  Copyright © 2021 Root Interface. All rights reserved.

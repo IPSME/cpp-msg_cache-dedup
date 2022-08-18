@@ -1,13 +1,12 @@
 //
-//  duplicate.hpp
-//  objc-zmq-reflector
+//  msg_cache-dedup.h
 //
 //  Created by dev on 2021-10-28.
 //  Copyright © 2021 Root Interface. All rights reserved.
 //
 
-#ifndef duplicate_h
-#define duplicate_h
+#ifndef msg_cache_dedup_h
+#define msg_cache_dedup_h
 
 #include <string>
 #include <unordered_map>
@@ -70,4 +69,4 @@ public:
 	}
 };
 
-#endif /* duplicate_h */
+#endif /* msg_cache_dedup_h */
