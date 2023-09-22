@@ -32,7 +32,7 @@ public:
 		tp_instant_= std::chrono::time_point_cast<std::chrono::milliseconds>( std::chrono::high_resolution_clock::now() );
 	}
 	bool expired() {
-		std::chrono::time_point now = std::chrono::high_resolution_clock::now();
+		std::chrono::time_point<std::chrono::high_resolution_clock> now = std::chrono::high_resolution_clock::now();
 		auto duration_integral= std::chrono::duration_cast<std::chrono::milliseconds>(now - tp_instant_ - ms_TTL_);
 		// std::cout << "Elapsed Time: " << duration_integral.count() << " milliseconds" << std::endl;
 		
